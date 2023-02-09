@@ -23,7 +23,7 @@ executing==1.2.0
 idna==3.4
 iniconfig==2.0.0
 ipdb==0.13.11
-ipython==8.9.0
+ipython==7.34.0
 jedi==0.18.2
 kombu==5.2.4
 matplotlib-inline==0.1.6
