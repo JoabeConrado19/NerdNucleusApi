@@ -77,7 +77,7 @@ class NewStartScrappyView(APIView):
                 soup2 = BeautifulSoup(response2.content, 'html.parser')
                 text = soup2.select_one('.content-left')
                 subtitle = soup2.select_one('.excerpt').text
-                print(subtitle)
+         
                 
    
                 pretty_text = text.prettify().strip().replace("\n", "").replace("\t", "")
