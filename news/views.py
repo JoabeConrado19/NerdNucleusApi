@@ -76,14 +76,19 @@ class NewStartScrappyView(APIView):
                 response2 = requests.get(url3)
                 soup2 = BeautifulSoup(response2.content, 'html.parser')
                 text = soup2.select_one('.content-left')
+                subtitle = soup2.select_one('.excerpt').text
+                print(subtitle)
+                
+   
                 pretty_text = text.prettify().strip().replace("\n", "").replace("\t", "")
                 
                 new_content['title'] = title['alt']
+                new_content['subtitle'] = subtitle
                 new_content['thumb'] = title['src']
                 new_content['date'] = date
                 new_content['category'] = category
                 new_content['text'] = pretty_text
-                new_addict = New.objects.create(**new_content)
+                # new_addict = New.objects.create(**new_content)
                 news_list.append(new_content)
 
             
