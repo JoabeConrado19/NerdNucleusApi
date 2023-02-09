@@ -88,7 +88,7 @@ class NewStartScrappyView(APIView):
                 new_content['date'] = date
                 new_content['category'] = category
                 new_content['text'] = pretty_text
-                # new_addict = New.objects.create(**new_content)
+                new_addict = New.objects.create(**new_content)
                 news_list.append(new_content)
 
             
