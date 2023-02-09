@@ -19,7 +19,7 @@ class NewView(APIView):
         for new in news:
             news_list.append(model_to_dict(new))
 
-        return Response(news_list, status.HTTP_200_OK)
+        return Response(list(reversed(news_list)), status.HTTP_200_OK)
         
 
 
@@ -86,7 +86,7 @@ class NewStartScrappyView(APIView):
                 new_addict = New.objects.create(**new_content)
                 news_list.append(new_content)
 
-
+            
             return Response(news_list, status.HTTP_200_OK)
 
     def post(self, request: Request) -> Request:
