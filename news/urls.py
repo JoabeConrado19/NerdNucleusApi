@@ -5,4 +5,5 @@ urlpatterns = [
     path("news/", NewView.as_view()),
     path("news/<int:news_id>/", NewDetailView.as_view()),
     path("news/startscrappy/", NewStartScrappyView.as_view())
+
 ]

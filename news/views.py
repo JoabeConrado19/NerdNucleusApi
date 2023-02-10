@@ -9,10 +9,12 @@ from news.models import New
 from rest_framework.views import APIView, Response, Request, status
 from .models import New
 from django.forms.models import model_to_dict
+from news.apps import AppConfig
 # Create your views here.
-
+    
 
 class NewView(APIView):
+
     def get(self, request: Request) -> Request:
         news_list = []
         news = New.objects.all()
