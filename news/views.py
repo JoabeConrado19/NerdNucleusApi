@@ -10,10 +10,14 @@ from rest_framework.views import APIView, Response, Request, status
 from .models import New
 from django.forms.models import model_to_dict
 from news.apps import AppConfig
+from rest_framework.pagination import PageNumberPagination
+from django.shortcuts import get_object_or_404
+
+
 # Create your views here.
     
 
-class NewView(APIView):
+class NewView(APIView, PageNumberPagination):
 
     def get(self, request: Request) -> Request:
         news_list = []
@@ -21,7 +25,11 @@ class NewView(APIView):
         for new in news:
             news_list.append(model_to_dict(new))
 
-        return Response(list(reversed(news_list)), status.HTTP_200_OK)
+        reverse = list(reversed(news_list))
+        result_page = self.paginate_queryset(reverse, request)
+        
+
+        return self.get_paginated_response(result_page)
         
 
 
@@ -33,9 +41,11 @@ class NewView(APIView):
 
 class NewDetailView(APIView):
     def get(self, request: Request, news_id: int) -> Response:
-       ...
+        new = get_object_or_404(New, id = news_id)
+        new_response = model_to_dict(new)
+        
+        return Response(new_response, status.HTTP_200_OK)
 
-        # return Response(team_dict, status.HTTP_200_OK)
 
     def delete(self, request: Request, news_id: int) -> Response:
        ...
