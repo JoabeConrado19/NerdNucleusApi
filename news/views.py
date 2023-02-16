@@ -22,6 +22,13 @@ class NewView(APIView, PageNumberPagination):
     def get(self, request: Request) -> Request:
         news_list = []
         news = New.objects.all()
+        titulo = request.GET.get('title')
+        category = request.GET.get('category')
+
+        if titulo:
+            news= news.filter(title__icontains=titulo)
+        if category:
+            news= news.filter(category__icontains=category)
         for new in news:
             news_list.append(model_to_dict(new))
 
