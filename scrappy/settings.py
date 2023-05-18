@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'news.apps.NewsConfig',
+    'animesDetails',
+    'anime',
+
 ]
 
 MIDDLEWARE = [

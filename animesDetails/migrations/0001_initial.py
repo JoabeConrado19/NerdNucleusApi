@@ -12,15 +12,13 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='New',
+            name='AnimeDetails',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=100, unique=True)),
-                ('subtitle', models.CharField(default=' ', max_length=100)),
                 ('text', models.CharField(max_length=5000)),
                 ('thumb', models.CharField(max_length=200)),
-                ('date', models.CharField(default=' ', max_length=100)),
-                ('category', models.CharField(default=' ', max_length=20)),
+                ('createdAt', models.DateTimeField(auto_now_add=True)),
             ],
         ),
     ]
