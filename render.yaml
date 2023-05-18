@@ -1,0 +1,5 @@
+services:
+  - name: web
+    plan: starter
+    buildCommand: python manage.py collectstatic --noinput
+    startCommand: gunicorn scrappy.wsgi --bind 0.0.0.0:8000
