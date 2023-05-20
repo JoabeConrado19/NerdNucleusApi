@@ -30,8 +30,8 @@ class AnimeView(ListCreateAPIView, PageNumberPagination):
 
 
 class AnimeDetailView(APIView):
-    def get(self, request: Request, news_id: int) -> Response:
-        anime = get_object_or_404(Anime, id = news_id)
+    def get(self, request: Request, anime_id: int) -> Response:
+        anime = get_object_or_404(Anime, id = anime_id)
         new_response = model_to_dict(anime)
         
         return Response(new_response, status.HTTP_200_OK)
