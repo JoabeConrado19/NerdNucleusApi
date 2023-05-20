@@ -24,7 +24,8 @@ from .serializer import AnimeSerializer
 class AnimeView(ListCreateAPIView, PageNumberPagination):
     queryset = Anime.objects.all()
     serializer_class = AnimeSerializer
-    ordering = ['-id']
+    def get_queryset(self):
+        return Anime.objects.order_by('-id')
 
 
 
