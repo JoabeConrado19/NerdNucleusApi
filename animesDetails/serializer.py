@@ -6,5 +6,5 @@ from .models import AnimeDetails
 class AnimeDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = AnimeDetails
-        fields = ['id', 'title', 'year', 'text', 'thumb', 'ep', 'release_day', 'studio']
+        fields = ['id', 'title', 'text', 'thumb', ]
         

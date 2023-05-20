@@ -14,38 +14,17 @@ from news.apps import AppConfig
 from rest_framework.pagination import PageNumberPagination
 from django.shortcuts import get_object_or_404
 from animesDetails.models import AnimeDetails
+from rest_framework.generics import ListCreateAPIView
+from .serializer import AnimeSerializer
 
 
 # Create your views here.
     
 
-class AnimeView(APIView, PageNumberPagination):
+class AnimeView(ListCreateAPIView, PageNumberPagination):
+    queryset = Anime.objects.all()
+    serializer_class = AnimeSerializer
 
-    # def get(self, request: Request) -> Request:
-    #     news_list = []
-    #     news = New.objects.all()
-    #     titulo = request.GET.get('title')
-    #     category = request.GET.get('category')
-
-    #     if titulo:
-    #         news= news.filter(title__icontains=titulo)
-    #     if category:
-    #         news= news.filter(category__icontains=category)
-    #     for new in news:
-    #         news_list.append(model_to_dict(new))
-
-    #     reverse = list(reversed(news_list))
-    #     result_page = self.paginate_queryset(reverse, request)
-        
-
-    #     return self.get_paginated_response(result_page)
-        
-
-
-    def post(self, request: Request) -> Request:
-        ...
-
-        # return Response(team_dict, status.HTTP_201_CREATED)
 
 
 class AnimeDetailView(APIView):
